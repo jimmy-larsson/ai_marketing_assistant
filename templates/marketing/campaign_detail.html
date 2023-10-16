@@ -5,41 +5,57 @@
 {% block content %}
     {% load custom_filters %}
 
-    <h1>{{ campaign.topic }}</h1>
+    <div class="container mx-auto px-4 bg-gray-100 rounded-lg p-6 shadow-lg">
+        <h1 class="text-4xl mb-4 text-black">{{ campaign.topic }}</h1>
 
-    <h2>Customer</h2>
-    <p>{{ campaign.customer.name }}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <h2 class="text-2xl mb-2 text-black">Customer</h2>
+                <p class="text-lg">{{ campaign.customer.name }}</p>
+            </div>
 
-    <h2>Start Date</h2>
-    <p>{{ campaign.start_date }}</p>
+            <div>
+                <h2 class="text-2xl mb-2 text-black">Start Date</h2>
+                <p class="text-lg">{{ campaign.start_date }}</p>
+            </div>
 
-    <h2>End Date</h2>
-    <p>{{ campaign.end_date }}</p>
+            <div>
+                <h2 class="text-2xl mb-2 text-black">End Date</h2>
+                <p class="text-lg">{{ campaign.end_date }}</p>
+            </div>
 
-    <h2>Budget</h2>
-    <p>${{ campaign.budget }}</p>
+            <div>
+                <h2 class="text-2xl mb-2 text-black">Budget</h2>
+                <p class="text-lg">${{ campaign.budget }}</p>
+            </div>
+        </div>
 
-    <h2>Goal</h2>
-    <p>{{ campaign.goal.name }}</p>
-    <p><strong>Description:</strong> {{ campaign.goal.description }}</p>
-    <p><strong>Target Audience:</strong> {{ campaign.goal.target_audience }}</p>
-    <p><strong>Suggested Channels:</strong> {{ campaign.goal.suggested_channels }}</p>
+        <h2 class="text-2xl mt-6 mb-2 text-black">Goal</h2>
+        <p class="text-lg">{{ campaign.goal.name }}</p>
+        <p class="text-lg"><strong>Description:</strong> {{ campaign.goal.description }}</p>
+        <p class="text-lg"><strong>Target Audience:</strong> {{ campaign.goal.target_audience }}</p>
+        <p class="text-lg"><strong>Suggested Channels:</strong> {{ campaign.goal.suggested_channels }}</p>
 
-    <!-- Display marketing materials if you have them in context -->
-    <h2>Marketing Materials</h2>
-    <ul>
-        {% for material in marketing_materials %}
-            <h3>{{ material }}</h3>
-            <h4>Related Questions:</h4>
-            <ul>
-                {% for question in material_to_questions|get_item:material %}
-                    <li>{{ question.question }}</li>
-                    <ul>
-                        <li>{{ question.answer }}</li>
+        <h2 class="text-2xl mt-6 mb-2 text-black">Marketing Materials</h2>
+        <ul class="list-decimal list-inside pl-5">
+            {% for material in marketing_materials %}
+                <li>
+                    <h3 class="text-xl text-black">{{ material }}</h3>
+                    <h4 class="text-lg mt-1 text-black">Related Questions:</h4>
+                    <ul class="list-disc list-inside pl-5">
+                        {% for question in material_to_questions|get_item:material %}
+                            <li>
+                                <p class="text-base">{{ question.question }}</p>
+                                <ul class="list-disc list-inside pl-5">
+                                    <li class="text-base">{{ question.answer }}</li>
+                                </ul>
+                            </li>
+                        {% endfor %}
                     </ul>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    </ul>
+                    <h4 class="text-lg mt-1 text-black">Generated content:</h4>
+                    <p class="text-base">{{ material.content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
-

@@ -1,29 +1,38 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  {# Make sure to extend the correct base template for Alternative 5 #}
 
 {% block title %}AI Marketing Assistant - Customer - List{% endblock %}
 
 {% block content %}
-    <h1>Customer List</h1>
+    <div class="container mx-auto px-4 bg-gray-100 rounded-lg p-6 shadow-lg">
+        <h1 class="text-3xl font-semibold text-black mb-4">Customer List</h1>
 
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Industry</th>
-            <th>Strong Points</th>
-            <th>Weaknesses</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for customer in customers %}
+        <table class="min-w-full divide-y divide-gray-200 bg-white rounded-lg shadow">
+            <thead class="bg-gray-50">
             <tr>
-                <td><a href="{% url 'customer_detail' customer.id %}">{{ customer.name }}</a></td>
-                <td>{{ customer.industry }}</td>
-                <td>{{ customer.strong_points }}</td>
-                <td>{{ customer.weaknesses }}</td>
+                <th class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Name</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Industry</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Strong Points</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">Weaknesses</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            {% for customer in customers %}
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <a href="{% url 'customer_detail' customer.id %}" class="text-sm text-black">{{ customer.name }}</a>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-black">{{ customer.industry }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-black">{{ customer.strong_points }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-black">{{ customer.weaknesses }}</div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

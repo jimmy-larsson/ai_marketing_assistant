@@ -1,12 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  {# Make sure to extend the correct base template for Alternative 5 #}
 
 {% block title %}AI Marketing Assistant - Customer - Edit details{% endblock %}
 
 {% block content %}
-    <h1>Edit Customer: {{ customer.name }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save changes</button>
-    </form>
+    <div class="container mx-auto px-4 bg-gray-100 rounded-lg p-6 shadow-lg">
+        <h1 class="text-3xl font-semibold text-black mb-4">Edit Customer: {{ customer.name }}</h1>
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="flex flex-col">
+                    <label for="{{ field.id_for_label }}" class="text-sm font-medium text-black">{{ field.label }}</label>
+                    <input id="{{ field.id_for_label }}" type="text" name="{{ field.name }}" class="p-2 border rounded-md" value="{{ field.value|default_if_none:'' }}">
+                    {% if field.errors %}
+                        <div class="text-red-500 text-xs">{{ field.errors.0 }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="bg-black text-white p-2 rounded-md hover:bg-gray-800">Save changes</button>
+        </form>
+    </div>
 {% endblock %}

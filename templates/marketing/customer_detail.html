@@ -1,44 +1,51 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  {# Make sure to extend the correct base template for Alternative 5 #}
 
 {% block title %}AI Marketing Assistant - Customer - Details{% endblock %}
 
 {% block content %}
-    <h1>{{ customer.name }}
-        <!-- Button to Edit Customer Information -->
-        <a href="{% url 'edit_customer' customer.id %}">
-            <button>Edit Customer</button>
-        </a>
-    </h1>
+    <div class="container mx-auto px-4 bg-gray-100 rounded-lg p-6 shadow-lg">
+        <div class="flex flex-wrap -mx-2">
+            <div class="w-full md:w-3/4 px-2">
+                <h1 class="text-3xl mt-4 text-black">{{ customer.name }}</h1>
+            </div>
+            <div class="w-full md:w-1/4 px-2 mt-6 md:mt-4 text-right">
+                <a href="{% url 'add_campaign' customer.id %}" class="bg-black text-white p-2 rounded-md hover:bg-gray-800">Add New Campaign</a>
+                <a href="{% url 'edit_customer' customer.id %}" class="bg-black text-white p-2 rounded-md hover:bg-gray-800">Edit Profile</a>
+            </div>
+        </div>
 
-    <!-- Button to Add a New Campaign -->
-    <a href="{% url 'add_campaign' customer.id %}">
-        <button>Add New Campaign</button>
-    </a>
+        <div class="flex flex-wrap -mx-2 mt-4">
+            <div class="w-full md:w-1/2 px-2">
+                <h2 class="text-2xl text-black">Industry</h2>
+                <p>{{ customer.industry }}</p>
 
-    <h2>Industry</h2>
-    <p>{{ customer.industry }}</p>
+                <h2 class="text-2xl mt-4 text-black">Strong Points</h2>
+                <p>{{ customer.strong_points }}</p>
 
-    <h2>Strong Points</h2>
-    <p>{{ customer.strong_points }}</p>
+                <h2 class="text-2xl mt-4 text-black">Weaknesses</h2>
+                <p>{{ customer.weaknesses }}</p>
+            </div>
+            <div class="w-full md:w-1/2 px-2">
+                <h2 class="text-2xl text-black">Products or Services</h2>
+                <p>{{ customer.products_or_services }}</p>
 
-    <h2>Weaknesses</h2>
-    <p>{{ customer.weaknesses }}</p>
+                <h2 class="text-2xl mt-4 text-black">Target Audience</h2>
+                <p>{{ customer.target_audience }}</p>
 
-    <h2>Products or Services</h2>
-    <p>{{ customer.products_or_services }}</p>
+                <h2 class="text-2xl mt-4 text-black">Competitors</h2>
+                <p>{{ customer.competitors }}</p>
+            </div>
+        </div>
 
-    <h2>Target Audience</h2>
-    <p>{{ customer.target_audience }}</p>
-
-    <h2>Competitors</h2>
-    <p>{{ customer.competitors }}</p>
-
-    <h2>Campaigns</h2>
-    <ul>
-        {% for campaign in campaigns %}
-            <li><a href="{% url 'campaign_detail' campaign.id %}">{{ campaign.topic }}</a></li>
-        {% empty %}
-            <li>No campaigns available.</li>
-        {% endfor %}
-    </ul>
+        <h2 class="text-2xl mt-4 text-black">Campaigns</h2>
+        <ul class="list-decimal list-inside">
+            {% for campaign in campaigns %}
+                <li>
+                    <a href="{% url 'campaign_detail' campaign.id %}" class="text-blue-500 hover:underline">{{ campaign.topic }}</a>
+                </li>
+            {% empty %}
+                <li class="text-black">No campaigns available.</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

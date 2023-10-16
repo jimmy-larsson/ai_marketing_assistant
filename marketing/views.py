@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
+from .forms import CustomerForm, CampaignForm
 from .models import Customer, Campaign, Goal, MarketingMaterial, MaterialQuestion
 
 
@@ -18,6 +19,20 @@ def customer_detail_view(request, customer_id):
     }
 
     return render(request, 'marketing/customer_detail.html', context)
+
+
+def edit_customer_view(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('customer_detail', customer_id=customer.id)
+    else:
+        form = CustomerForm(instance=customer)
+
+    context = {'form': form, 'customer': customer}
+    return render(request, 'marketing/edit_customer.html', context)
 
 
 def campaign_detail_view(request, campaign_id):
@@ -40,3 +55,19 @@ def campaign_detail_view(request, campaign_id):
     }
 
     return render(request, 'marketing/campaign_detail.html', context)
+
+
+def add_campaign_view(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    if request.method == 'POST':
+        form = CampaignForm(request.POST)
+        if form.is_valid():
+            new_campaign = form.save(commit=False)
+            new_campaign.customer = customer
+            new_campaign.save()
+            return redirect('customer_detail', customer_id=customer.id)
+    else:
+        form = CampaignForm()
+
+    context = {'form': form, 'customer': customer}
+    return render(request, 'marketing/add_campaign.html', context)

@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Customer Detail</title>
-</head>
-<body>
-    <h1>{{ customer.name }}</h1>
+{% extends 'base.html' %}
+
+{% block title %}Customer - Details{% endblock %}
+
+{% block content %}
+    <h1>{{ customer.name }}
+        <!-- Button to Edit Customer Information -->
+        <a href="{% url 'edit_customer' customer.id %}">
+            <button>Edit Customer</button>
+        </a>
+    </h1>
+
+    <!-- Button to Add a New Campaign -->
+    <a href="{% url 'add_campaign' customer.id %}">
+        <button>Add New Campaign</button>
+    </a>
 
     <h2>Industry</h2>
     <p>{{ customer.industry }}</p>
@@ -26,11 +35,10 @@
 
     <h2>Campaigns</h2>
     <ul>
-    {% for campaign in campaigns %}
-        <li><a href="{% url 'campaign_detail' campaign.id %}">{{ campaign.topic }}</a></li>
-    {% empty %}
-        <li>No campaigns available.</li>
-    {% endfor %}
+        {% for campaign in campaigns %}
+            <li><a href="{% url 'campaign_detail' campaign.id %}">{{ campaign.topic }}</a></li>
+        {% empty %}
+            <li>No campaigns available.</li>
+        {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

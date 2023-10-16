@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Customer List</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
+{% block title %}Customer - List{% endblock %}
+
+{% block content %}
     <h1>Customer List</h1>
 
     <table border="1">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Industry</th>
-                <th>Strong Points</th>
-                <th>Weaknesses</th>
-            </tr>
+        <tr>
+            <th>Name</th>
+            <th>Industry</th>
+            <th>Strong Points</th>
+            <th>Weaknesses</th>
+        </tr>
         </thead>
         <tbody>
-            {% for customer in customers %}
-                <tr>
-                    <td><a href="{% url 'customer_detail' customer.id %}">{{ customer.name }}</a></td>
-                    <td>{{ customer.industry }}</td>
-                    <td>{{ customer.strong_points }}</td>
-                    <td>{{ customer.weaknesses }}</td>
-                </tr>
-            {% endfor %}
+        {% for customer in customers %}
+            <tr>
+                <td><a href="{% url 'customer_detail' customer.id %}">{{ customer.name }}</a></td>
+                <td>{{ customer.industry }}</td>
+                <td>{{ customer.strong_points }}</td>
+                <td>{{ customer.weaknesses }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
-</body>
-</html>
+{% endblock %}

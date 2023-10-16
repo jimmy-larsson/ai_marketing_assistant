@@ -10,3 +10,4 @@ class CampaignForm(forms.ModelForm):
     class Meta:
         model = Campaign
         fields = '__all__'
+        # TODO: Pre-populate and lock the Customer if not an admin.

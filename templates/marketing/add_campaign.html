@@ -11,6 +11,7 @@
         <form method="post" class="space-y-4">
             {% csrf_token %}
 
+            <!-- TODO: Fix the form not filling the container without losing the field types (e.g. option dropdown) -->
             <div class="space-y-2 bg-gray-100 p-4 rounded-lg">
                 {{ form.as_p |add_tailwind_classes:"text-base text-gray-700 leading-5" }}
             </div>

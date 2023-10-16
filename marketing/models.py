@@ -7,10 +7,11 @@ class Goal(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     target_audience = models.TextField(null=True, blank=True)
-    suggested_channels = models.TextField(null=True, blank=True)  # E.g., Email, Social Media, etc.
+    suggested_channels = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
 
 # Customer Model
 class Customer(models.Model):
@@ -55,9 +56,12 @@ class Customer(models.Model):
     products_or_services = models.TextField(null=True, blank=True)
     target_audience = models.TextField(null=True, blank=True)
     competitors = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
 
 # Campaign Model
 class Campaign(models.Model):
@@ -67,17 +71,35 @@ class Campaign(models.Model):
     end_date = models.DateField(null=True, blank=True)
     goal = models.ForeignKey(Goal, related_name='campaigns', on_delete=models.SET_NULL, null=True, blank=True)
     budget = models.FloatField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.customer.name} - {self.topic}'
 
+
 # Marketing Material Model
 class MarketingMaterial(models.Model):
+    material_types = (
+        ('blog', 'Blog'),
+        ('email', 'Email'),
+        ('newsletter', 'Newsletter'),
+        # Add other types as needed
+    )
     campaign = models.ForeignKey(Campaign, related_name='materials', on_delete=models.CASCADE)
-    material_type = models.CharField(max_length=100)  # Blog, Email, Newsletter, etc.
+    material_type = models.CharField(max_length=100, choices=material_types)
     content = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.campaign.topic} - {self.material_type}'
+        return f'{self.campaign} - {self.material_type}'
+
+
+class MaterialQuestion(models.Model):
+    material = models.ForeignKey(MarketingMaterial, related_name='questions', on_delete=models.CASCADE)  # Changed field
+    question = models.CharField(max_length=300)
+    answer = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.material.campaign} - {self.material.material_type} - {self.question}'

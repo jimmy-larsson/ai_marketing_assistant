@@ -9,116 +9,44 @@
       "weaknesses": "Expensive",
       "products_or_services": "Smartphones, Laptops",
       "target_audience": "Young adults, Professionals",
-      "competitors": "BrandX, BrandY"
+      "competitors": "BrandX, BrandY",
+      "created_at": "2023-01-01T12:00:00Z",
+      "updated_at": "2023-10-01T12:00:00Z"
     }
   },
   {
     "model": "marketing.customer",
     "pk": 2,
     "fields": {
-      "name": "HealthPlus",
+      "name": "MedicHouse",
       "industry": "Healthcare",
       "strong_points": "Experienced Staff, Modern Equipment",
       "weaknesses": "Limited Locations",
       "products_or_services": "Health Checkups, Consultations",
       "target_audience": "Families, Elderly",
-      "competitors": "MediCare, FastHeal"
+      "competitors": "MediCare, FastHeal",
+      "created_at": "2023-02-01T12:00:00Z",
+      "updated_at": "2023-10-02T12:00:00Z"
     }
   },
   {
     "model": "marketing.customer",
     "pk": 3,
     "fields": {
-      "name": "AutoMight",
-      "industry": "Automotive",
-      "strong_points": "Fuel Efficiency, Safety Features",
-      "weaknesses": "High Maintenance Cost",
-      "products_or_services": "Sedans, SUVs",
-      "target_audience": "Families, Travel Enthusiasts",
-      "competitors": "DriveWell, Speedo"
+      "name": "HealthPlus",
+      "industry": "Healthcare",
+      "strong_points": "Holistic Health Plans",
+      "weaknesses": "Limited Specializations",
+      "products_or_services": "Holistic Health Plans, Alternative Medicine",
+      "target_audience": "Individuals, Alternative Medicine Enthusiasts",
+      "competitors": "HolisticHealth, AltMed",
+      "created_at": "2023-04-01T12:00:00Z",
+      "updated_at": "2023-10-04T12:00:00Z"
     }
   },
   {
     "model": "marketing.customer",
     "pk": 4,
-    "fields": {
-      "name": "EcoEarth",
-      "industry": "Renewable Energy",
-      "strong_points": "Sustainability, Cost-Effective Solutions",
-      "weaknesses": "Limited Reach",
-      "products_or_services": "Solar Panels, Wind Turbines",
-      "target_audience": "Governments, Corporations",
-      "competitors": "GreenPower, SunRay"
-    }
-  },
-  {
-    "model": "marketing.customer",
-    "pk": 5,
-    "fields": {
-      "name": "FoodieFinds",
-      "industry": "Food and Beverage",
-      "strong_points": "Quality Ingredients, Unique Flavors",
-      "weaknesses": "Short Shelf-Life",
-      "products_or_services": "Snacks, Organic Produce",
-      "target_audience": "Health Conscious Individuals, Foodies",
-      "competitors": "SnackBox, FreshMart"
-    }
-  },
-  {
-    "model": "marketing.customer",
-    "pk": 6,
-    "fields": {
-      "name": "SkyHigh Airlines",
-      "industry": "Aviation",
-      "strong_points": "Punctuality, In-Flight Service",
-      "weaknesses": "High Ticket Price",
-      "products_or_services": "Domestic and International Flights",
-      "target_audience": "Business Travelers, Tourists",
-      "competitors": "AirZoom, FlyFast"
-    }
-  },
-  {
-    "model": "marketing.customer",
-    "pk": 7,
-    "fields": {
-      "name": "FashionFront",
-      "industry": "Fashion",
-      "strong_points": "Trendy Designs, Quality Material",
-      "weaknesses": "Seasonal Appeal",
-      "products_or_services": "Clothing, Accessories",
-      "target_audience": "Young Adults, Trend Setters",
-      "competitors": "StyleCo, ChicMakers"
-    }
-  },
-  {
-    "model": "marketing.customer",
-    "pk": 8,
-    "fields": {
-      "name": "SportSwift",
-      "industry": "Sports",
-      "strong_points": "Durability, Performance Enhancement",
-      "weaknesses": "Limited Product Range",
-      "products_or_services": "Athletic Wear, Equipment",
-      "target_audience": "Athletes, Fitness Enthusiasts",
-      "competitors": "AthleTech, GearUp"
-    }
-  },
-  {
-    "model": "marketing.customer",
-    "pk": 9,
-    "fields": {
-      "name": "BrainyBooks",
-      "industry": "Publishing",
-      "strong_points": "Diverse Genres, Quality Content",
-      "weaknesses": "E-Book Competition",
-      "products_or_services": "Books, Journals",
-      "target_audience": "Students, Book Lovers",
-      "competitors": "ReadMasters, LitHub"
-    }
-  },
-  {
-    "model": "marketing.customer",
-    "pk": 10,
     "fields": {
       "name": "HomeHarmony",
       "industry": "Home and Living",
@@ -126,7 +54,9 @@
       "weaknesses": "Premium Pricing",
       "products_or_services": "Furniture, Home Decor",
       "target_audience": "Home Owners, Interior Designers",
-      "competitors": "LivingSpace, DecorDelight"
+      "competitors": "LivingSpace, DecorDelight",
+      "created_at": "2023-05-01T12:00:00Z",
+      "updated_at": "2023-10-05T12:00:00Z"
     }
   }
 ]

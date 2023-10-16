@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Customer, Campaign, Goal, MarketingMaterial
+from .models import Customer, Campaign, Goal, MarketingMaterial, MaterialQuestion
 
 
 def customer_list_view(request):
@@ -23,12 +23,20 @@ def customer_detail_view(request, customer_id):
 def campaign_detail_view(request, campaign_id):
     campaign = get_object_or_404(Campaign, id=campaign_id)
     goals = Goal.objects.filter(campaigns=campaign)
-    marketing_material = campaign.materials.all()
+    marketing_materials = MarketingMaterial.objects.filter(campaign=campaign)
+
+    # Create a dictionary where the keys are MarketingMaterial objects
+    # and the values are lists of MaterialQuestion objects related to that MarketingMaterial.
+    material_to_questions = {}
+    for material in marketing_materials:
+        material_questions = MaterialQuestion.objects.filter(material=material)
+        material_to_questions[material] = material_questions
 
     context = {
         'campaign': campaign,
         'goals': goals,
-        'marketing_materials': marketing_material,
+        'marketing_materials': marketing_materials,
+        'material_to_questions': material_to_questions,
     }
 
     return render(request, 'marketing/campaign_detail.html', context)

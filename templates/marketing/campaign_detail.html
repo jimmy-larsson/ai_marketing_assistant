@@ -1,38 +1,47 @@
+{% load custom_filters %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Campaign Detail</title>
 </head>
 <body>
-    <h1>{{ campaign.topic }}</h1>
+<h1>{{ campaign.topic }}</h1>
 
-    <h2>Customer</h2>
-    <p>{{ campaign.customer.name }}</p>
+<h2>Customer</h2>
+<p>{{ campaign.customer.name }}</p>
 
-    <h2>Start Date</h2>
-    <p>{{ campaign.start_date }}</p>
+<h2>Start Date</h2>
+<p>{{ campaign.start_date }}</p>
 
-    <h2>End Date</h2>
-    <p>{{ campaign.end_date }}</p>
+<h2>End Date</h2>
+<p>{{ campaign.end_date }}</p>
 
-    <h2>Budget</h2>
-    <p>${{ campaign.budget }}</p>
+<h2>Budget</h2>
+<p>${{ campaign.budget }}</p>
 
-    <h2>Goal</h2>
-    <p>{{ campaign.goal.name }}</p>
-    <p><strong>Description:</strong> {{ campaign.goal.description }}</p>
-    <p><strong>Target Audience:</strong> {{ campaign.goal.target_audience }}</p>
-    <p><strong>Suggested Channels:</strong> {{ campaign.goal.suggested_channels }}</p>
+<h2>Goal</h2>
+<p>{{ campaign.goal.name }}</p>
+<p><strong>Description:</strong> {{ campaign.goal.description }}</p>
+<p><strong>Target Audience:</strong> {{ campaign.goal.target_audience }}</p>
+<p><strong>Suggested Channels:</strong> {{ campaign.goal.suggested_channels }}</p>
 
-    <!-- Display marketing materials if you have them in context -->
-    <h2>Marketing Materials</h2>
-    <ul>
-    {% for material in materials %}
-        <li>{{ material.material_type }} - {{ material.content }}</li>
-    {% empty %}
-        <li>No marketing materials available.</li>
+<!-- Display marketing materials if you have them in context -->
+<h2>Marketing Materials</h2>
+<ul>
+    {% for material in marketing_materials %}
+        <h3>{{ material }}</h3>
+        <h4>Related Questions:</h4>
+        <ul>
+            {% for question in material_to_questions|get_item:material %}
+                <li>{{ question.question }}</li>
+                <ul>
+                    <li>{{ question.answer }}</li>
+                </ul>
+            {% endfor %}
+        </ul>
     {% endfor %}
-    </ul>
+</ul>
 
 </body>
 </html>

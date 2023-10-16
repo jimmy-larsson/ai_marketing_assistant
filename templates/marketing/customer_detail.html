@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Detail</title>
+</head>
+<body>
+    <h1>{{ customer.name }}</h1>
+
+    <h2>Industry</h2>
+    <p>{{ customer.industry }}</p>
+
+    <h2>Strong Points</h2>
+    <p>{{ customer.strong_points }}</p>
+
+    <h2>Weaknesses</h2>
+    <p>{{ customer.weaknesses }}</p>
+
+    <h2>Products or Services</h2>
+    <p>{{ customer.products_or_services }}</p>
+
+    <h2>Target Audience</h2>
+    <p>{{ customer.target_audience }}</p>
+
+    <h2>Competitors</h2>
+    <p>{{ customer.competitors }}</p>
+
+    <h2>Campaigns</h2>
+    <ul>
+    {% for campaign in campaigns %}
+        <li><a href="{% url 'campaign_detail' campaign.id %}">{{ campaign.topic }}</a></li>
+    {% empty %}
+        <li>No campaigns available.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,82 @@
+[
+  {
+    "model": "marketing.goal",
+    "pk": 1,
+    "fields": {
+      "name": "Increase Sales",
+      "description": "The primary focus is to boost revenue through customer acquisition.",
+      "target_audience": "Existing Customers, Potential Customers",
+      "suggested_channels": "Email, Social Media, PPC"
+    }
+  },
+  {
+    "model": "marketing.goal",
+    "pk": 2,
+    "fields": {
+      "name": "Generate Leads",
+      "description": "Goal is to collect quality leads for the sales team to close.",
+      "target_audience": "Potential Customers",
+      "suggested_channels": "Content Marketing, PPC, SEO"
+    }
+  },
+  {
+    "model": "marketing.goal",
+    "pk": 3,
+    "fields": {
+      "name": "Brand Awareness",
+      "description": "Increase the visibility and impact of the brand.",
+      "target_audience": "General Public",
+      "suggested_channels": "Social Media, Content Marketing, Public Relations"
+    }
+  },
+  {
+    "model": "marketing.goal",
+    "pk": 4,
+    "fields": {
+      "name": "Improve Customer Retention",
+      "description": "Increase customer loyalty and decrease churn rate.",
+      "target_audience": "Existing Customers",
+      "suggested_channels": "Email Marketing, Customer Service, Social Media"
+    }
+  },
+  {
+    "model": "marketing.goal",
+    "pk": 5,
+    "fields": {
+      "name": "Launch New Product or Service",
+      "description": "Introduce a new product or service to the market.",
+      "target_audience": "Existing Customers, Potential Customers",
+      "suggested_channels": "Email, PPC, Social Media"
+    }
+  },
+  {
+    "model": "marketing.goal",
+    "pk": 6,
+    "fields": {
+      "name": "Expand Market Reach",
+      "description": "Enter new markets or demographics.",
+      "target_audience": "New Markets, New Demographics",
+      "suggested_channels": "SEO, PPC, Public Relations"
+    }
+  },
+  {
+    "model": "marketing.goal",
+    "pk": 7,
+    "fields": {
+      "name": "Build Thought Leadership",
+      "description": "Establish the brand or key people as experts in the field.",
+      "target_audience": "Industry Professionals, General Public",
+      "suggested_channels": "Content Marketing, Social Media, Speaking Engagements"
+    }
+  },
+  {
+    "model": "marketing.goal",
+    "pk": 8,
+    "fields": {
+      "name": "Enhance Customer Engagement",
+      "description": "Increase customer involvement and interaction with the brand.",
+      "target_audience": "Existing Customers",
+      "suggested_channels": "Social Media, Content Marketing, Community Building"
+    }
+  }
+]

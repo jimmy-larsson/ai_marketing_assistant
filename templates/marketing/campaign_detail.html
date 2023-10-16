@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campaign Detail</title>
+</head>
+<body>
+    <h1>{{ campaign.topic }}</h1>
+
+    <h2>Customer</h2>
+    <p>{{ campaign.customer.name }}</p>
+
+    <h2>Start Date</h2>
+    <p>{{ campaign.start_date }}</p>
+
+    <h2>End Date</h2>
+    <p>{{ campaign.end_date }}</p>
+
+    <h2>Budget</h2>
+    <p>${{ campaign.budget }}</p>
+
+    <h2>Goal</h2>
+    <p>{{ campaign.goal.name }}</p>
+    <p><strong>Description:</strong> {{ campaign.goal.description }}</p>
+    <p><strong>Target Audience:</strong> {{ campaign.goal.target_audience }}</p>
+    <p><strong>Suggested Channels:</strong> {{ campaign.goal.suggested_channels }}</p>
+
+    <!-- Display marketing materials if you have them in context -->
+    <h2>Marketing Materials</h2>
+    <ul>
+    {% for material in materials %}
+        <li>{{ material.material_type }} - {{ material.content }}</li>
+    {% empty %}
+        <li>No marketing materials available.</li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+.build/
+.develop/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs
+logs/
+*.log
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Pycharm IDE files
+.idea/
+
+# VS Code files
+.vscode/
+
+# Node modules (if you happen to use Node.js as well)
+node_modules/
+
+# System files
+.DS_Store
+*.swp
+
+# Environment files
+.env
+.env.local
+
+# Static and media files
+/static/
+/media/
+
+# Other
+*.bak
+
